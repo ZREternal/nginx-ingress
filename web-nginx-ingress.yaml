@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingres
+  labels:
+    app: nginx-test
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - 自定义
+    secretName: 自定义，用TLSKEY.SH创建
+  rules:
+  - host: 自定义
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: nginx-test
+            port: 
+              number: 80
+
